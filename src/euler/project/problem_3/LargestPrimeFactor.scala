@@ -12,16 +12,17 @@ import java.math.BigInteger
  */
 
 object LargestPrimeFactor extends App{
-  def primitivePrime(n: Int) = primitivePrime_tr(n,n/2)
-  def primitivePrime_tr(n: Int, m: Int): Boolean = m match {
+  val number: Long = 600851475143L
+  def primitivePrime(n: Long) = primitivePrime_tr(n,n/2)
+  def primitivePrime_tr(n: Long, m: Long): Boolean = m match {
     case 1 => true
     case _ if(n%m==0) => false
     case _ => primitivePrime_tr(n,m-1)
   }
 
-  val listPrimitivePrime = for (i <- 2 to 1000 if primitivePrime(i)) yield i
-  println(listPrimitivePrime)
-  println(listPrimitivePrime.size)
+//  val listPrimitivePrime = for (i <- 2 to 1000 if primitivePrime(i)) yield i
+//  println(listPrimitivePrime)
+//  println(listPrimitivePrime.size)
   //6*n+1 or 6*n-1
   //increment with 2 and 4
   def smallestFactor(n: Long) = smallestFactor_tr(n,2)
@@ -41,7 +42,7 @@ object LargestPrimeFactor extends App{
     case _ if n%m==1&&id%2==0 => gpfPrimitive_tr(n,m+inc._1,id+1,ans)
     case _ => gpfPrimitive_tr(n,m+inc._2,id+1,ans)
   }
-  println(gpfPrimitive(13195))
+//  println(gpfPrimitive(13195))
 //  val a1: BigInt = 203
 //  val a1: BigInt = 207
   val a1: BigInt = 199
@@ -49,8 +50,27 @@ object LargestPrimeFactor extends App{
 //  val a2: BigInt = 209
   val a2: BigInt = 215
 
-  println(a1.isProbablePrime(100))
-  println(a2.isProbablePrime(100))
-  println()
+//  println(a1.isProbablePrime(100))
+//  println(a2.isProbablePrime(100))
+//  println()
 //  println(gpfPrimitive(13195))
+  println("number is " + number)
+  val list: List[Long] = ((for (i <- 1 to 10000) yield Array((i*6+1).toLong,(i*6-1).toLong)).reduceLeft(_++_)).toList
+  def divniy(n: Long, m: Long): Long = divniy_tr(n,m)
+  def divniy_tr(n: Long, m: Long): Long = if (n%m==0) divniy_tr(n/m, m) else n
+  var temp = number
+  val a = for (i <- list; b: BigInt = i;d:BigInt = divniy(number,i); if d!=number) yield {
+    temp = temp/i
+    Pair(b,temp)
+  }
+//  println(list(23))
+//  println(list)
+//  println(a)
+  println(a.filter(_._1.isProbablePrime(100)))
+//  //(486847,1234169)
+//  val tempRes: BigInt = number/486847
+//  println(tempRes)
+//  println(tempRes.isProbablePrime(100))
+  println(number==(71L*839*1471*6857))
+  println(primitivePrime(6857))
 }
