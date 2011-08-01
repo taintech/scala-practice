@@ -1,4 +1,4 @@
-package euler.project.problem_5
+package euler.project.problem_6
 
 import scala.math._
 
