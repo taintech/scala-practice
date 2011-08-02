@@ -16,12 +16,15 @@ object Experiment extends App{
     if (it>=n) list
     else primes_tr(n,it+1,list ++ Array[BigInt](it*6+1,it*6-1))
   }
-  val start1 = System.currentTimeMillis()
-  val primes1 = primes(100000,100)
-  println((System.currentTimeMillis()-start1)+":" + primes1.size)
-  val start2 = System.currentTimeMillis()
-  val primes2 = primes(100000,10)
-  println((System.currentTimeMillis()-start2)+":" + primes2.size)
+//  val start1 = System.currentTimeMillis()
+//  val primes1 = primes(100000,100)
+//  println((System.currentTimeMillis()-start1)+":" + primes1.size)
+//  val start2 = System.currentTimeMillis()
+//  val primes2 = primes(100000,10)
+//  println((System.currentTimeMillis()-start2)+":" + primes2.size)
+  private def gcd(a: Int, b: Int): Int =
+    if(b==0) a else gcd(b, a%b)
+  println(gcd(556,6))
 //  val start3 = System.currentTimeMillis()
 //  val primes3 = primes(100000,7)
 //  println((System.currentTimeMillis()-start3)+":" + primes3.size)
