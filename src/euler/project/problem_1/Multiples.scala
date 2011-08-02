@@ -10,6 +10,7 @@ package euler.project.problem_1
 
 object Multiples extends App{
   def sum: Long = sum_tr(0,0)
+
   def sum_tr(sum: Long, n: Long): Long = n match {
     case 1000 => sum
     case _ if (n%3==0||n%5==0)=> sum_tr(sum+n, n+1)
