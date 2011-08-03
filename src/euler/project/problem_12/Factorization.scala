@@ -7,19 +7,20 @@ package euler.project.problem_12
  * Time: 15:04
  * To change this template use File | Settings | File Templates.
  */
-//TODO
 object Factorization extends App{
-  val list: Array[BigInt] = (for {
-    i <- 1L to 600L
-    i1: BigInt = 6*i + 1
-    i2: BigInt = 6*i - 1
-  } yield Array(i1,i2)).reduceLeft(_++_)
-  val primelist = list.filter(_.isProbablePrime(100))
-  println(primelist.size)
-  def factorsNumber(n: Long): Long = factors_tr(n,1,0)
-  def factors_tr(n: Long,f: Long,count: Long): Long = (n%f) match {
-    case 0L if f==n => count+1
-    case 0L => factors_tr(n,f+1,count+1)
-    case _ => factors_tr(n,f+1,count)
+  def triangleNumber(n: Int): Long = ((n.toDouble/2)*(n+1)).toLong
+  def factors(n: Long): Array[Int] = factors_tr(n,Array(),1)
+  def factors_tr(n: Long,list: Array[Int],i: Int): Array[Int] = n%i match {
+    case 0 if (n==i) => list
+    case 0 if ((!list.isEmpty)&&(n/i).toInt==list.head) => list
+    case 0 if (n/i==i) => Array(i.toInt)++list
+    case _ if (i>n/2) => list
+    case 0 => factors_tr(n,Array(i.toInt,(n/i).toInt)++list,i+1)
+    case _ => factors_tr(n,list,i+1)
   }
+  def res = res_tr(1,0)
+  def res_tr(n: Int,length: Int): Long =
+    if (length>500) triangleNumber(n-1)
+    else res_tr(n+1,factors(triangleNumber(n)).length)
+  println(res)
 }

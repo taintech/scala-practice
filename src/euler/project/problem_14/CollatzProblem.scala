@@ -7,7 +7,7 @@ package euler.project.problem_14
  * Time: 1:21 AM
  * To change this template use File | Settings | File Templates.
  */
-//todo test
+//todo solve
 object CollatzProblem extends App{
   def chain = chain_tr(List(8),List(4))
   def chain_tr(list: List[Int], last: List[Int]): List[Int] = {
