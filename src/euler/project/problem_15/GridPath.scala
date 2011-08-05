@@ -14,4 +14,6 @@ object GridPath extends App{
     case _ => (paths(n-1)*2)+2*n
   }
   println(paths(20))
+
+
 }
