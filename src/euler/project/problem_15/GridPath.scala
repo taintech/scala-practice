@@ -9,7 +9,9 @@ package euler.project.problem_15
  */
 //TODO
 object GridPath extends App{
-  var res: BigInt = 1L;
-  for (i <- 2L to 3L) res = res * i;
-  println(res)
+  def paths(n: Int): Long =  n match {
+    case 2 => 6
+    case _ => (paths(n-1)*2)+2*n
+  }
+  println(paths(20))
 }
