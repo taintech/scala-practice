@@ -14,6 +14,7 @@ class Rational(n: Int, d: Int) extends Ordered[Rational]{
   val numer = n/g
   val denumer = d/g
   def this(n: Int) = this(n, 1)
+
   override def toString = numer + "/" + denumer
 
   def +(that: Rational): Rational =

@@ -9,7 +9,6 @@ package euler.project.problem_17
  */
 //todo solve
 object NumbertoText extends App{
-  def clean(s: String) = s.replaceAll("[ ,-]","")
   val dict = Map(
     1->"one", 2->"two", 3->"three",4->"four",5->"five",
     6->"six",7->"seven",8->"eight",9->"nine",10->"ten",
@@ -25,6 +24,8 @@ object NumbertoText extends App{
     else if (i<1000) dict(i/100) +" "+ dict(100) +{if (i%100!=0) " and "+ text(i%100) else ""}
     else dict(1000)
   }
-  val list = for (i <- 1 to  1000) yield text(i)
-  println(clean(list.foldLeft("")(_+_)).length())
+  val sb = new StringBuilder("")
+  for (i <- 1 to  1000) sb++=text(i)
+
+  println(sb.toString.filter(_.isLetter).size)
 }
