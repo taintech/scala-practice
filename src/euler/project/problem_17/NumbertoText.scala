@@ -27,5 +27,6 @@ object NumbertoText extends App{
   val sb = new StringBuilder("")
   for (i <- 1 to  1000) sb++=text(i)
 
-  println(sb.toString.filter(_.isLetter).size)
+//  println(sb.toString.filter(_.isLetter).size)
+  println(text(403))
 }
