@@ -27,4 +27,5 @@ object NumbertoText extends App{
   }
   val list = for (i <- 1 to  1000) yield text(i)
   println(clean(list.foldLeft("")(_+_)).length())
+  val buf = new StringBuilder
 }
